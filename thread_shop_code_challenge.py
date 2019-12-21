@@ -155,10 +155,54 @@ threads_sold = []
 for i in temp_threads_sold:
   for e in i:
     threads_sold.append(e)
-    
 #print(customers, sales, threads_sold)
 ##Add up the sales list for a daily total.
-total_sales = 0
+sales_total = 0
 sales_float = []
 for sale in sales:
-  sales_float.append(sale.strip('$')
+  sales_float.append(float(sale.strip('$')))
+sales_total = sum(sales_float)
+print(round(sales_total, 2))
+
+##how much thread of a specific colour was sold?
+#print(threads_sold)
+
+threads_sold_split = []
+temp_list = []
+for thread in threads_sold:
+  if len(thread) <= 6:
+    threads_sold_split.append(thread)
+  if len(thread) >= 7:
+    temp_list.append(thread.split('&'))
+
+for i in temp_list:
+  for e in i:
+    threads_sold_split.append(e)
+ 
+#print(threads_sold_split)
+
+def colour_count(colour):
+  total = 0
+  for thread in threads_sold_split:
+    if colour == thread:
+      total = total + 1
+    else:
+      continue
+  return total
+    
+print(colour_count('white'))
+
+
+colours = ['red','yellow','green','white','black','blue','purple']
+
+#iterate through colours list and add up sum of each colour thread sold using 'colour_count' function. Print sentance using the .format() method.
+
+for i in colours:
+  colour_total = colour_count(i)
+  print(i + ' = ' + str(colour_total))
+    
+print('All that thread sold for £ {} !!'.format(round(sales_total, 2)))
+
+
+
+
