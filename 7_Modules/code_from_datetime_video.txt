@@ -1,0 +1,35 @@
+'''import datetime
+ print(dir(datetime))
+['MAXYEAR', 'MINYEAR', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'date', 'datetime', 'datetime_CAPI', 'sys', 'time', 'timedelta', 'timezone', 'tzinfo']
+ from datetime import datetime
+ birthday =  datetime(1980, 8, 22, 4, 28, 12)
+ print(birthday)
+1980-08-22 04:28:12
+ birthday.year
+1980
+>>> birthday.hour
+4
+>>> birthday.weekday
+<built-in method weekday of datetime.datetime object at 0x029AA608>
+>>> birthday.weekday()
+4
+>>> print(datetime.now)
+<built-in method now of type object at 0x655F93B0>
+>>> datetime.now()
+datetime.datetime(2019, 12, 24, 0, 0, 7, 980451)
+>>> 
+>>> 
+>>> 
+>>> datetime(2018, 1, 1) - datetime(2017, 1, 1)
+datetime.timedelta(days=365)
+>>> parsed_date = datetime.strptime('Jan 15, 2018', '%b %d, %Y')
+>>> print(parsed_date.month)
+1
+>>> parsed_date
+datetime.datetime(2018, 1, 15, 0, 0)
+>>> parsed_date.year
+2018
+>>> date_string = datetime.strftime(datetime.now(), '%b %d, %Y')
+>>> date_string
+'Dec 24, 2019'
+>>> '''
