@@ -14,7 +14,7 @@ print(sensors, num_cameras)
 
 translations = {'mountain': 'orod', 'bread': 'bass', 'friend': 'mellon', 'horse': 'roch'}
 
-## 3. Invalid keys - can only use lists or dictionaries as the 'value' sode of a key, not the key itself
+## 3. Invalid keys - can only use lists or dictionaries as the 'value' side of a key, not the key itself
 
 children = {"von Trapp": ["Johannes", "Rosmarie", "Eleonore"], "Corleone":["Sonny", "Fredo", "Michael"]}
 
