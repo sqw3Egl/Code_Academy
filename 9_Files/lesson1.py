@@ -86,7 +86,63 @@ After opening our new CSV file we use csv.DictReader(users_csv) which converts t
 
 When we iterate through the rows of our user_reader object, we access all of the rows in our CSV as dictionaries (except for the first row, which we used to label the keys of our dictionary). By accessing the 'Email' key of each of these rows we can grab the email address in that row and append it to our list_of_email_addresses.'''
 
+##READING DIFFERENT TYPES OF CSV FILES
+ import csv
+
+with open('books.csv', newline='') as books_csv:
+  books_reader = csv.DictReader(books_csv, delimiter='@')
+  isbn_list = []
+  for book in books_reader:
+    isbn_list.append(book['ISBN'])
 
 
+##WRITING A CSV FILE
+
+    access_log = [{'time': '08:39:37', 'limit': 844404, 'address': '1.227.124.181'}, {'time': '13:13:35', 'limit': 543871, 'address': '198.51.139.193'}, {'time': '19:40:45', 'limit': 3021, 'address': '172.1.254.208'}, {'time': '18:57:16', 'limit': 67031769, 'address': '172.58.247.219'}, {'time': '21:17:13', 'limit': 9083, 'address': '124.144.20.113'}, {'time': '23:34:17', 'limit': 65913, 'address': '203.236.149.220'}, {'time': '13:58:05', 'limit': 1541474, 'address': '192.52.206.76'}, {'time': '10:52:00', 'limit': 11465607, 'address': '104.47.149.93'}, {'time': '14:56:12', 'limit': 109, 'address': '192.31.185.7'}, {'time': '18:56:35', 'limit': 6207, 'address': '2.228.164.197'}]
+fields = ['time', 'address', 'limit']
+
+import csv
+
+with open('logger.csv', 'w') as logger_csv:
+  log_writer = csv.DictWriter(logger_csv, fieldnames=fields)
+  
+  log_writer.writeheader() #writes the first line of the csv file(fieldnames)
+  for log in access_log:
+    log_writer.writerow(log)
+
+## READING A JSON FILE
+ import json
+
+with open('message.json') as message_json:
+  message = json.load(message_json)
+  
+print(message['text'])
+
+# WRITING A JSON FILE
+
+data_payload = [
+  {'interesting message': 'What is JSON? A web application\'s little pile of secrets.',
+   'follow up': 'But enough talk!'}
+]
+
+import json
+
+with open('data.json', 'w') as data_json:
+  json.dump(data_payload, data_json)
+
+'''Learn Python: Files
+Review
+
+Now you know all about files! You were able to:
+
+    Open up file objects using open() and with.
+    Read a file’s full contents using Python’s .read() method.
+    Read a file line-by-line using .readline() and .readlines()
+    Create new files by opening them in write-mode.
+    Append to a file non-destructively by opening a file in append-mode.
+    Apply all of the above to different types of data-carrying files including CSV and JSON!
+
+You have all the skills necessary to read, write, and update files programmatically, a very useful skill in the Python universe!
+'''
 
 
