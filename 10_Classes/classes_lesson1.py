@@ -145,6 +145,113 @@ class Circle:
     
 teaching_table = Circle(36)
 
+# 9. INSTANCE VARIABLES
+
+#example code:
+class FakeDict:
+  pass
+
+fake_dict1 = FakeDict()
+fake_dict2 = FakeDict()
+
+fake_dict1.fake_key = "This works!"
+fake_dict2.fake_key = "This too!"
+
+# Let's join the two strings together!
+working_string = "{} {}".format(fake_dict1.fake_key, fake_dict2.fake_key)
+print(working_string)
+# prints "This works! This too!"
+
+#my code:
+class Store:
+  pass
+
+alternative_rocks = Store()
+isabelles_ices = Store()
+
+alternative_rocks.store_name = "Alternative Rocks"
+isabelles_ices.store_name = "Isabelle's Ices"
+
+# 10. ATTRIBUTE FUNCTIONS
+
+# example code:
+class NoCustomAttributes:
+  pass
+
+attributeless = NoCustomAttributes()
+
+try:
+  attributeless.fake_attribute
+except AttributeError:
+  print("This text gets printed!")
+
+# prints "This text gets printed!"
+
+hasattr(attributeless, "fake_attribute")
+# returns False
+
+getattr(attributeless, "other_fake_attribute", 800)
+# returns 800, the default value
+
+#my code:
+how_many_s = [{'s': False}, "sassafrass", 18, ["a", "c", "s", "d", "s"]]
+
+for element in how_many_s:
+  if hasattr(element, "count"):
+    print(element.count("s"))
+
+# 11. SELF
+
+# example code
+class SearchEngineEntry:
+  def __init__(self, url):
+    self.url = url
+
+codecademy = SearchEngineEntry("www.codecademy.com")
+wikipedia = SearchEngineEntry("www.wikipedia.org")
+
+print(codecademy.url)
+# prints "www.codecademy.com"
+
+print(wikipedia.url)
+# prints "www.wikipedia.org"
+
+class SearchEngineEntry:
+  secure_prefix = "https://"
+  def __init__(self, url):
+    self.url = url
+
+  def secure(self):
+    return "{prefix}{site}".format(prefix=self.secure_prefix, site=self.url)
+
+codecademy = SearchEngineEntry("www.codecademy.com")
+
+print(codecademy.secure())
+# prints "https://www.codecademy.com"
+
+print(wikipedia.secure())
+# prints "https://www.wikipedia.org"
+
+# my code:
+class Circle:
+  pi = 3.14
+  def __init__(self, diameter):
+    print("Creating circle with diameter {d}".format(d=diameter))
+    # Add assignment for self.radius here:
+    
+    self.radius = diameter / 2
+    
+  def circumference(self):
+    return 2 * self.pi * self.radius
+  
+medium_pizza = Circle(12)
+teaching_table = Circle(36)
+round_room = Circle(11460)
+
+print(medium_pizza.circumference())
+print(teaching_table.circumference())
+print(round_room.circumference())
+
 
 
 
