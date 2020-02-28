@@ -252,6 +252,87 @@ print(medium_pizza.circumference())
 print(teaching_table.circumference())
 print(round_room.circumference())
 
+#12. EVERYTHING IS AN OBJECT
+
+# example code:
+
+class FakeDict:
+  pass
+
+fake_dict = FakeDict()
+fake_dict.attribute = "Cool"
+
+dir(fake_dict)
+# Prints ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'attribute']
+
+That’s certainly a lot more attributes than we defined! Python automatically adds a number of attributes to all objects that get created. These internal attributes are usually indicated by double-underscores. But sure enough, attribute is in that list.
+
+Do you remember being able to use type() on Python’s native data types? This is because they are also objects in Python. Their classes are int, float, str, list, and dict. These Python classes have special syntax for their instantiation, 1, 1.0, "hello", [], and {} specifically. But these instances are still full-blown objects to Python.
+
+fun_list = [10, "string", {'abc': True}]
+
+type(fun_list)
+# Prints <class 'list'>
+
+dir(fun_list)
+# Prints ['__add__', '__class__', [...], 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+
+Above we define a new list. We check it’s type and see that’s an instantiation of class list. We use dir() to explore its attributes, and it gives us a large number of internal Python dunder attributes, but, afterward, we get the usual list methods.
+
+# my code:
+
+print(dir(5))
+
+def this_function_is_an_object():
+  return "woo"
+  
+print(dir(this_function_is_an_object))
+  
+#13. STRING REPRESENTATION
+
+class Circle:
+  pi = 3.14
+  
+  def __init__(self, diameter):
+    self.radius = diameter / 2
+  
+  def area(self):
+    return self.pi * self.radius ** 2
+  
+  def circumference(self):
+    return self.pi * 2 * self.radius
+  
+  def __repr__(self):
+    return "Circle with radius " "{radius}".format(radius=self.radius)
+  
+medium_pizza = Circle(12)
+teaching_table = Circle(36)
+round_room = Circle(11460)
+
+print(medium_pizza, teaching_table, round_room)
+
+#14. REVIEW
+
+class Student:
+  def __init__(self, name, year):
+    self.name = name
+    self.year = year
+    self.grades = []
+  
+  def add_grade(self, grade):
+    if type(grade) is Grade:
+      self.grades.append(grade)      
+
+class Grade:
+  minimum_passing = 65
+  
+  def __init__(self, score):
+    self.score = score
+    
+roger = Student("Roger van der Weyden", 10)
+sandro = Student("Sandro Botticelli", 12)
+pieter = Student("Pieter Bruegel the Elder", 8)
+pieter.add_grade(Grade(100))
 
 
 
